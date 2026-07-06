@@ -2,6 +2,9 @@
 .streamlit/secrets.toml
 .env
 
+# Config local de herramientas de desarrollo
+.claude/
+
 # Python
 __pycache__/
 *.py[cod]
