@@ -61,8 +61,8 @@ def evaluar_referencia(
     key = api_key or get_api_key()
     if not key:
         raise GeminiError(
-            "No se encontró la API key de Gemini. Configura GEMINI_API_KEY en "
-            ".streamlit/secrets.toml o como variable de entorno."
+            "No se encontró la clave del motor de IA. Contacte al administrador "
+            "para completar la configuración."
         )
     if not pdf_bytes:
         raise GeminiError("El PDF está vacío o no se pudo leer.")
@@ -84,7 +84,7 @@ def evaluar_referencia(
             ),
         )
     except Exception as exc:  # errores de red/API
-        raise GeminiError(f"Error al invocar Gemini: {exc}") from exc
+        raise GeminiError(f"Error al invocar el motor de IA: {exc}") from exc
 
     veredicto = getattr(response, "parsed", None)
     if isinstance(veredicto, Veredicto):

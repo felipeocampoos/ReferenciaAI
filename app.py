@@ -20,7 +20,6 @@ from report_pdf import generar_reporte_lote_pdf, generar_reporte_pdf
 from schema import Veredicto
 
 APP_VERSION = "1.1.0"
-MODELO = "gemini-2.5-flash"
 COLOR_PRIMARIO = "#0F6AB4"
 COLOR_TEXTO = "#1B2733"
 COLOR_MUTED = "#5A6A78"
@@ -158,7 +157,6 @@ def _render_header() -> None:
             <div class="brand"><strong>Clínica Al Alba</strong> · Referencia y Contrarreferencia</div>
             <div class="titulo">Validador de referencias asistido por IA</div>
             <div class="subtitulo">Evaluación automatizada de historias clínicas contra la matriz institucional de inclusión y exclusión.</div>
-            <span class="chip">Powered by Gemini 2.5 Flash</span>
         </div>
         """,
         unsafe_allow_html=True,
@@ -168,7 +166,7 @@ def _render_header() -> None:
 def _render_sidebar(criterios, api_ok: bool) -> None:
     with st.sidebar:
         st.markdown("### Estado del sistema")
-        st.markdown(f"- **API Gemini:** {'✅ conectada' if api_ok else '⚠️ no configurada'}")
+        st.markdown(f"- **Motor de IA:** {'✅ conectado' if api_ok else '⚠️ no configurado'}")
         fecha = _fecha_matriz(str(MATRIZ_PATH))
         st.markdown(f"- **Matriz:** {fecha or 'sin fecha registrada'}")
         st.markdown(
@@ -196,7 +194,6 @@ def _render_sidebar(criterios, api_ok: bool) -> None:
         st.markdown("### Soporte")
         st.markdown(
             f"- **Versión:** {APP_VERSION}\n"
-            f"- **Modelo:** `{MODELO}`\n"
             "- **Contacto:** referencia@clinicaalalba.co"
         )
 
@@ -413,8 +410,8 @@ def main() -> None:
 
     if not api_ok:
         st.warning(
-            "No se detectó `GEMINI_API_KEY`. Configúrala en "
-            "`.streamlit/secrets.toml` o como variable de entorno para poder evaluar."
+            "El motor de IA no está configurado. Contacte al administrador de la "
+            "aplicación para completar la configuración antes de evaluar."
         )
 
     st.subheader("1. Cargar historias clínicas")

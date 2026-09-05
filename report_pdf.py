@@ -31,7 +31,6 @@ from reportlab.platypus import (
 
 from schema import Veredicto
 
-MODELO = "gemini-2.5-flash"
 INSTITUCION = "Clínica Al Alba"
 UNIDAD = "Referencia y Contrarreferencia"
 
@@ -202,7 +201,7 @@ def _tabla_metadatos(archivo: str, eval_id: str, styles) -> Table:
         ["Archivo evaluado", archivo],
         ["Fecha de evaluación", fecha],
         ["ID de evaluación", eval_id],
-        ["Modelo utilizado", MODELO],
+        ["Evaluado por", "Validador asistido por IA"],
     ]
     tabla = Table(data, colWidths=[4.5 * cm, 12 * cm])
     tabla.setStyle(
