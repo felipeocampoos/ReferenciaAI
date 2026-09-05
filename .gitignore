@@ -1,5 +1,7 @@
 # Secrets
 .streamlit/secrets.toml
+.streamlit/secrets*.toml
+.streamlit/*.json
 .env
 
 # Config local de herramientas de desarrollo

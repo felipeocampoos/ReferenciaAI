@@ -1,4 +1,4 @@
-"""App Streamlit: validador de referencias con IA (Gemini 2.5 Flash).
+"""App Streamlit: validador de referencias con IA (Gemini 3.8 Flash).
 
 Interfaz institucional para el área de Referencia y Contrarreferencia. Permite
 subir una o varias historias clínicas en PDF y evaluar cada una contra la matriz
@@ -15,7 +15,7 @@ import pandas as pd
 import streamlit as st
 
 from criteria import MATRIZ_PATH, load_criterios
-from gemini_client import GeminiError, evaluar_referencia, get_api_key
+from gemini_client import GeminiError, evaluar_referencia, is_configured
 from report_pdf import generar_reporte_lote_pdf, generar_reporte_pdf
 from schema import Veredicto
 
@@ -399,7 +399,7 @@ def main() -> None:
     _inject_estilo()
     _render_header()
 
-    api_ok = bool(get_api_key())
+    api_ok = is_configured()
     try:
         criterios = load_criterios()
     except Exception as exc:

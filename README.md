@@ -1,7 +1,7 @@
 # Validador de referencias con IA — Clínica Al Alba
 
 Herramienta de apoyo para el área de **Referencia y Contrarreferencia**. Recibe la
-historia clínica de un paciente remitido en **PDF**, la evalúa con **Gemini 2.5 Flash**
+historia clínica de un paciente remitido en **PDF**, la evalúa con **Gemini 3.8 Flash**
 contra la matriz institucional de criterios de inclusión/exclusión
 (`matriz_inclusion_exclusion_referencias.xlsx`) y devuelve un **veredicto estructurado**
 con un resumen que explica las razones.
@@ -57,7 +57,7 @@ Sube un PDF y pulsa **Evaluar referencia**.
 | `app.py` | Interfaz Streamlit y orquestación (punto de entrada) |
 | `criteria.py` | Carga la matriz Excel → contexto de criterios (cacheado) |
 | `prompts.py` | System instruction y reglas de decisión |
-| `gemini_client.py` | Llamada a Gemini 2.5 Flash con salida estructurada |
+| `gemini_client.py` | Llamada a Gemini 3.8 Flash con salida estructurada |
 | `schema.py` | Modelos Pydantic del veredicto |
 | `matriz_inclusion_exclusion_referencias.xlsx` | Fuente de criterios (solo lectura) |
 | `requirements.txt` | Dependencias para Streamlit Cloud / pip |
